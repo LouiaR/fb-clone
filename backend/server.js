@@ -7,10 +7,9 @@ const mongoose = require("mongoose");
 dotenv.config();
 const app = express();
 
-const options = {
-  origin: "http://example.com",
-};
-app.use(cors(options));
+app.use(cors());
+
+app.use(express.json());
 
 readdirSync("./routes").map((route) =>
   app.use("/api/v1", require(`./routes/${route}`))
